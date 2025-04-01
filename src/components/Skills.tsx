@@ -100,7 +100,7 @@ const Skills = () => {
               className="skill-category transform translate-y-10 opacity-0 transition-all duration-500 ease-out"
             >
               <h4 className="text-lg font-medium text-resume-dark mb-3 flex items-center">
-                <CheckCircle2 size={20} className="text-resume-accent mr-2" />
+                <CheckCircle2 size={20} className="text-resume-accent mr-2 flex-shrink-0" />
                 {category.title}
               </h4>
               

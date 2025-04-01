@@ -64,18 +64,18 @@ const About = () => {
             
             <div className="space-y-4">
               <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
-                <MapPin className="text-resume-accent" size={20} />
+                <MapPin className="text-resume-accent flex-shrink-0" size={20} />
                 <span>Cebu City, Province Of Cebu, CEB 6000</span>
               </div>
               
               <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
-                <Phone className="text-resume-accent" size={20} />
+                <Phone className="text-resume-accent flex-shrink-0" size={20} />
                 <span>+63 906 892 5683</span>
               </div>
               
               <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
-                <Mail className="text-resume-accent" size={20} />
-                <span>antonio.telimban.jr@gmail.com</span>
+                <Mail className="text-resume-accent flex-shrink-0" size={20} />
+                <span className="break-all">antonio.telimban.jr@gmail.com</span>
               </div>
               
               <hr className="border-gray-300 my-4" />
@@ -83,17 +83,17 @@ const About = () => {
               <h3 className="text-xl font-semibold text-resume-primary mb-2">Key Strengths</h3>
               
               <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
-                <Code className="text-resume-accent" size={20} />
+                <Code className="text-resume-accent flex-shrink-0" size={20} />
                 <span>Full-stack development with modern technologies</span>
               </div>
               
               <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
-                <Award className="text-resume-accent" size={20} />
+                <Award className="text-resume-accent flex-shrink-0" size={20} />
                 <span>Multiple Google Cloud certifications</span>
               </div>
               
               <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
-                <Users className="text-resume-accent" size={20} />
+                <Users className="text-resume-accent flex-shrink-0" size={20} />
                 <span>Leadership and mentoring experience</span>
               </div>
             </div>

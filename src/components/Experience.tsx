@@ -109,7 +109,7 @@ const Experience = () => {
                   </h4>
                 </div>
                 <div className="flex items-center text-resume-dark mt-2 md:mt-0 font-medium">
-                  <Calendar size={16} className="mr-1" />
+                  <Calendar size={16} className="mr-1 flex-shrink-0" />
                   <span>{exp.period}</span>
                 </div>
               </div>
