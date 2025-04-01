@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "homepage": "https://suguspnk.github.io/resume"
+    "homepage": "https://suguspnk.github.io"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
