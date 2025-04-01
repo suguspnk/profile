@@ -1,8 +1,34 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MapPin, Phone, Mail, Award, Users, Code } from 'lucide-react';
 
 const About = () => {
+  const leftColRef = useRef<HTMLDivElement>(null);
+  const rightColRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target === leftColRef.current) {
+            entry.target.classList.add('translate-x-0', 'opacity-100');
+          } else if (entry.target === rightColRef.current) {
+            entry.target.classList.add('translate-x-0', 'opacity-100');
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: "0px 0px -100px 0px"
+    });
+
+    if (leftColRef.current) observer.observe(leftColRef.current);
+    if (rightColRef.current) observer.observe(rightColRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="about" className="section py-20 bg-white" style={{ '--delay': 1 } as React.CSSProperties}>
       <div className="container mx-auto px-4">
@@ -11,7 +37,10 @@ const About = () => {
         </h2>
         
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
+          <div 
+            ref={leftColRef}
+            className="transform -translate-x-10 opacity-0 transition-all duration-700 ease-out"
+          >
             <p className="text-lg mb-6 leading-relaxed">
               I'm a passionate Software Engineer with extensive experience in full-stack development, 
               cloud technologies, and software architecture. My journey in software development has equipped me with 
@@ -27,21 +56,24 @@ const About = () => {
             </p>
           </div>
           
-          <div className="bg-resume-secondary p-6 rounded-lg">
+          <div 
+            ref={rightColRef}
+            className="bg-resume-secondary p-6 rounded-lg shadow-md transform translate-x-10 opacity-0 transition-all duration-700 ease-out"
+          >
             <h3 className="text-xl font-semibold text-resume-primary mb-4">Personal Information</h3>
             
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
                 <MapPin className="text-resume-accent" size={20} />
                 <span>Cebu City, Province Of Cebu, CEB 6000</span>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
                 <Phone className="text-resume-accent" size={20} />
                 <span>+63 906 892 5683</span>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
                 <Mail className="text-resume-accent" size={20} />
                 <span>antonio.telimban.jr@gmail.com</span>
               </div>
@@ -50,17 +82,17 @@ const About = () => {
               
               <h3 className="text-xl font-semibold text-resume-primary mb-2">Key Strengths</h3>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
                 <Code className="text-resume-accent" size={20} />
                 <span>Full-stack development with modern technologies</span>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
                 <Award className="text-resume-accent" size={20} />
                 <span>Multiple Google Cloud certifications</span>
               </div>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 hover:translate-x-2 transition-transform duration-300">
                 <Users className="text-resume-accent" size={20} />
                 <span>Leadership and mentoring experience</span>
               </div>

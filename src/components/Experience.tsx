@@ -16,6 +16,7 @@ const Experience = () => {
         if (entry.isIntersecting) {
           setTimeout(() => {
             entry.target.classList.add('opacity-100', 'translate-x-0');
+            entry.target.classList.add('scale-100');
           }, index * 200);
           observer.unobserve(entry.target);
         }
@@ -84,8 +85,9 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section py-20 bg-resume-light" style={{ '--delay': 2 } as React.CSSProperties}>
-      <div className="container mx-auto px-4">
+    <section id="experience" className="section py-20 bg-resume-light relative overflow-hidden" style={{ '--delay': 2 } as React.CSSProperties}>
+      <div className="absolute top-0 left-0 w-full h-full bg-[url('/src/assets/code-pattern.png')] opacity-5"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <h2 className="text-3xl font-bold text-resume-primary mb-12 text-center">
           Work <span className="text-resume-accent">Experience</span>
         </h2>
@@ -94,7 +96,7 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <div 
               key={index} 
-              className="timeline-item opacity-0 transform translate-x-10 transition-all duration-700"
+              className="timeline-item opacity-0 transform translate-x-10 scale-95 transition-all duration-700"
               ref={el => timelineRefs.current[index] = el}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
