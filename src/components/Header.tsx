@@ -1,6 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,11 +11,17 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      
+
       // Determine active section
-      const sections = ['about', 'experience', 'skills', 'education', 'contact'];
+      const sections = [
+        'about',
+        'experience',
+        'skills',
+        'education',
+        'contact',
+      ];
       let currentSection = 'hero';
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -27,7 +32,7 @@ const Header = () => {
           }
         }
       }
-      
+
       setActiveSection(currentSection);
     };
 
@@ -46,64 +51,105 @@ const Header = () => {
   const isActive = (section: string) => activeSection === section;
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled ? 'bg-resume-primary shadow-md py-2' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold text-resume-primary transform transition-transform hover:scale-105">
-          <span className="text-resume-accent">A</span>ntonio
+        <h1
+          className={`text-xl font-bold transition-colors duration-300 ${
+            isScrolled ? 'text-resume-light' : 'text-resume-primary'
+          } transform transition-transform hover:scale-105`}
+        >
+          <span
+            className={`transition-colors duration-300 ${
+              isScrolled ? 'text-resume-accent' : 'text-resume-accent'
+            }`}
+          >
+            A
+          </span>
+          ntonio
         </h1>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex gap-8">
             <li>
-              <button 
+              <button
                 onClick={() => scrollToSection('about')}
-                className={`relative text-resume-dark hover:text-resume-accent transition-colors py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
-                  isActive('about') ? 'text-resume-accent after:w-full' : 'after:w-0'
+                className={`relative transition-colors duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
+                  isScrolled
+                    ? 'text-resume-light hover:text-resume-accent'
+                    : 'text-resume-primary hover:text-resume-accent'
+                } ${
+                  isActive('about')
+                    ? 'text-resume-accent after:w-full'
+                    : 'after:w-0'
                 }`}
               >
                 About
               </button>
             </li>
             <li>
-              <button 
+              <button
                 onClick={() => scrollToSection('experience')}
-                className={`relative text-resume-dark hover:text-resume-accent transition-colors py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
-                  isActive('experience') ? 'text-resume-accent after:w-full' : 'after:w-0'
+                className={`relative transition-colors duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
+                  isScrolled
+                    ? 'text-resume-light hover:text-resume-accent'
+                    : 'text-resume-primary hover:text-resume-accent'
+                } ${
+                  isActive('experience')
+                    ? 'text-resume-accent after:w-full'
+                    : 'after:w-0'
                 }`}
               >
                 Experience
               </button>
             </li>
             <li>
-              <button 
+              <button
                 onClick={() => scrollToSection('skills')}
-                className={`relative text-resume-dark hover:text-resume-accent transition-colors py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
-                  isActive('skills') ? 'text-resume-accent after:w-full' : 'after:w-0'
+                className={`relative transition-colors duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
+                  isScrolled
+                    ? 'text-resume-light hover:text-resume-accent'
+                    : 'text-resume-primary hover:text-resume-accent'
+                } ${
+                  isActive('skills')
+                    ? 'text-resume-accent after:w-full'
+                    : 'after:w-0'
                 }`}
               >
                 Skills
               </button>
             </li>
             <li>
-              <button 
+              <button
                 onClick={() => scrollToSection('education')}
-                className={`relative text-resume-dark hover:text-resume-accent transition-colors py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
-                  isActive('education') ? 'text-resume-accent after:w-full' : 'after:w-0'
+                className={`relative transition-colors duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
+                  isScrolled
+                    ? 'text-resume-light hover:text-resume-accent'
+                    : 'text-resume-primary hover:text-resume-accent'
+                } ${
+                  isActive('education')
+                    ? 'text-resume-accent after:w-full'
+                    : 'after:w-0'
                 }`}
               >
                 Education
               </button>
             </li>
             <li>
-              <button 
+              <button
                 onClick={() => scrollToSection('contact')}
-                className={`relative text-resume-dark hover:text-resume-accent transition-colors py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
-                  isActive('contact') ? 'text-resume-accent after:w-full' : 'after:w-0'
+                className={`relative transition-colors duration-300 py-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-resume-accent after:transition-all after:duration-300 ${
+                  isScrolled
+                    ? 'text-resume-light hover:text-resume-accent'
+                    : 'text-resume-primary hover:text-resume-accent'
+                } ${
+                  isActive('contact')
+                    ? 'text-resume-accent after:w-full'
+                    : 'after:w-0'
                 }`}
               >
                 Contact
@@ -113,12 +159,18 @@ const Header = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="md:hidden p-2 text-resume-primary relative z-20"
+        <button
+          className={`md:hidden p-2 relative z-20 transition-colors duration-300 ${
+            isScrolled ? 'text-resume-light' : 'text-resume-primary'
+          }`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X size={24} className="animate-fade-in" /> : <Menu size={24} className="animate-fade-in" />}
+          {isMenuOpen ? (
+            <X size={24} className="animate-fade-in" />
+          ) : (
+            <Menu size={24} className="animate-fade-in" />
+          )}
         </button>
       </div>
 
@@ -127,7 +179,7 @@ const Header = () => {
         <div className="md:hidden fixed inset-0 bg-white z-10 pt-16 animate-fade-in">
           <ul className="flex flex-col">
             <li className="border-b border-gray-100">
-              <button 
+              <button
                 onClick={() => scrollToSection('about')}
                 className={`w-full text-left px-4 py-4 hover:bg-resume-secondary transition-colors ${
                   isActive('about') ? 'text-resume-accent' : ''
@@ -137,7 +189,7 @@ const Header = () => {
               </button>
             </li>
             <li className="border-b border-gray-100">
-              <button 
+              <button
                 onClick={() => scrollToSection('experience')}
                 className={`w-full text-left px-4 py-4 hover:bg-resume-secondary transition-colors ${
                   isActive('experience') ? 'text-resume-accent' : ''
@@ -147,7 +199,7 @@ const Header = () => {
               </button>
             </li>
             <li className="border-b border-gray-100">
-              <button 
+              <button
                 onClick={() => scrollToSection('skills')}
                 className={`w-full text-left px-4 py-4 hover:bg-resume-secondary transition-colors ${
                   isActive('skills') ? 'text-resume-accent' : ''
@@ -157,7 +209,7 @@ const Header = () => {
               </button>
             </li>
             <li className="border-b border-gray-100">
-              <button 
+              <button
                 onClick={() => scrollToSection('education')}
                 className={`w-full text-left px-4 py-4 hover:bg-resume-secondary transition-colors ${
                   isActive('education') ? 'text-resume-accent' : ''
@@ -167,7 +219,7 @@ const Header = () => {
               </button>
             </li>
             <li>
-              <button 
+              <button
                 onClick={() => scrollToSection('contact')}
                 className={`w-full text-left px-4 py-4 hover:bg-resume-secondary transition-colors ${
                   isActive('contact') ? 'text-resume-accent' : ''
