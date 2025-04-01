@@ -1,7 +1,8 @@
 
 import React, { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
-import profilePicture from '../assets/profile-picture.jpg';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -9,6 +10,7 @@ const Hero = () => {
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const elements = [
@@ -38,23 +40,23 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center relative bg-gradient-to-br from-resume-light to-resume-secondary overflow-hidden">
       <div className="absolute inset-0 bg-[url('/src/assets/code-pattern.png')] opacity-5 animate-pulse"></div>
-      <div className="container mx-auto px-4 py-20 text-center relative z-10 md:flex md:items-center md:text-left md:justify-between">
+      <div className="container mx-auto px-4 py-12 md:py-20 text-center relative z-10 flex flex-col-reverse md:flex-row md:items-center md:text-left md:justify-between gap-8">
         <div className="md:w-3/5">
           <h1 
             ref={titleRef}
-            className="text-4xl md:text-6xl font-bold text-resume-primary mb-4 transform translate-y-10 opacity-0 transition-all duration-700"
+            className="text-3xl md:text-6xl font-bold text-resume-primary mb-4 transform translate-y-10 opacity-0 transition-all duration-700"
           >
             ANTONIO TELIMBAN JR
           </h1>
           <h2 
             ref={subtitleRef}
-            className="text-2xl md:text-3xl text-resume-dark mb-8 font-medium transform translate-y-10 opacity-0 transition-all duration-700"
+            className="text-xl md:text-3xl text-resume-dark mb-6 md:mb-8 font-medium transform translate-y-10 opacity-0 transition-all duration-700"
           >
             <span className="text-resume-accent">SOFTWARE ENGINEER</span>
           </h2>
           <p 
             ref={descriptionRef}
-            className="text-lg max-w-2xl mx-auto md:mx-0 mb-12 text-resume-dark transform translate-y-10 opacity-0 transition-all duration-700"
+            className="text-base md:text-lg max-w-2xl mx-auto md:mx-0 mb-8 md:mb-12 text-resume-dark transform translate-y-10 opacity-0 transition-all duration-700"
           >
             Full Stack Developer with 9 years of experience building scalable applications
             and optimizing software performance.
@@ -65,13 +67,13 @@ const Hero = () => {
           >
             <button 
               onClick={() => scrollToSection('experience')}
-              className="px-6 py-3 bg-resume-primary text-white rounded-md hover:bg-opacity-90 transition-all hover:scale-105"
+              className="px-4 md:px-6 py-2 md:py-3 bg-resume-primary text-white rounded-md hover:bg-opacity-90 transition-all hover:scale-105"
             >
               View Experience
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="px-6 py-3 border border-resume-primary text-resume-primary rounded-md hover:bg-resume-primary hover:text-white transition-all hover:scale-105"
+              className="px-4 md:px-6 py-2 md:py-3 border border-resume-primary text-resume-primary rounded-md hover:bg-resume-primary hover:text-white transition-all hover:scale-105"
             >
               Contact Me
             </button>
@@ -79,11 +81,11 @@ const Hero = () => {
         </div>
         <div 
           ref={profileRef} 
-          className="hidden md:block md:w-2/5 transform translate-y-10 opacity-0 transition-all duration-700"
+          className="flex justify-center md:block md:w-2/5 transform translate-y-10 opacity-0 transition-all duration-700"
         >
-          <div className="relative mx-auto w-80 h-80 rounded-full overflow-hidden border-4 border-resume-accent shadow-xl hover:scale-105 transition-transform duration-300">
+          <div className={`relative mx-auto ${isMobile ? 'w-48 h-48' : 'w-80 h-80'} rounded-full overflow-hidden border-4 border-resume-accent shadow-xl hover:scale-105 transition-transform duration-300`}>
             <img 
-              src={profilePicture} 
+              src="/lovable-uploads/e86a25c1-b140-4266-8aed-dd77878a31e4.png" 
               alt="Antonio Telimban Jr" 
               className="w-full h-full object-cover"
             />

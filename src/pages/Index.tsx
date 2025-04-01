@@ -44,8 +44,32 @@ const Index = () => {
       });
     });
     
+    // Add touch swipe detection for mobile users
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const handleSwipe = () => {
+      const swipeThreshold = 50;
+      const swipeDistance = touchEndX - touchStartX;
+      
+      if (Math.abs(swipeDistance) > swipeThreshold) {
+        // Could implement section navigation here in the future
+      }
+    };
+    
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+    
     return () => {
       observer.disconnect();
+      document.removeEventListener('touchstart', () => {});
+      document.removeEventListener('touchend', () => {});
     };
   }, []);
 
