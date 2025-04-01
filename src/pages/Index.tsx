@@ -12,6 +12,28 @@ const Index = () => {
   useEffect(() => {
     // Update page title
     document.title = "Antonio Telimban Jr - Software Engineer";
+    
+    // Set up intersection observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: "0px 0px -100px 0px"
+    });
+    
+    // Observe all sections with the section class
+    document.querySelectorAll('.section').forEach(section => {
+      observer.observe(section);
+    });
+    
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (

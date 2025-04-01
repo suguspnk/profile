@@ -1,8 +1,36 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Briefcase, Calendar } from 'lucide-react';
 
 const Experience = () => {
+  const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const options = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -100px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('opacity-100', 'translate-x-0');
+          }, index * 200);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    timelineRefs.current.forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const experiences = [
     {
       title: "Full Stack Software Engineer",
@@ -64,7 +92,11 @@ const Experience = () => {
 
         <div className="max-w-4xl mx-auto">
           {experiences.map((exp, index) => (
-            <div key={index} className="timeline-item">
+            <div 
+              key={index} 
+              className="timeline-item opacity-0 transform translate-x-10 transition-all duration-700"
+              ref={el => timelineRefs.current[index] = el}
+            >
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
                 <div>
                   <h3 className="text-xl font-semibold text-resume-primary">
