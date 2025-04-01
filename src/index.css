@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,37 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+.section {
+  @apply py-16 opacity-0 animate-fade-in;
+  animation-fill-mode: forwards;
+  animation-delay: calc(var(--delay) * 0.1s);
+}
+
+.timeline-item {
+  @apply relative pl-8 pb-8 border-l border-resume-secondary;
+}
+
+.timeline-item::before {
+  content: '';
+  @apply absolute left-[-8px] w-4 h-4 bg-resume-accent rounded-full border-2 border-white;
+}
+
+.timeline-item:last-child {
+  @apply border-l-0 pb-0;
+}
+
+.skill-pill {
+  @apply px-3 py-1 rounded-full bg-resume-secondary text-resume-dark text-sm font-medium transition-all hover:bg-resume-accent hover:text-white;
+}
+
+.skill-category {
+  @apply mb-8;
 }
