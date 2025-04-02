@@ -1,5 +1,5 @@
 import { useIsMobile } from '@/hooks/use-mobile';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Mail, User } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
 const Hero = () => {
@@ -36,72 +36,72 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative bg-gradient-to-br from-resume-light to-resume-secondary overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/src/assets/code-pattern.png')] opacity-5 animate-pulse"></div>
-      <div className="container mx-auto px-4 py-12 md:py-20 text-center relative z-10 flex flex-col-reverse md:flex-row md:items-center md:text-left md:justify-between gap-8">
-        <div className="md:w-3/5">
+    <section className="min-h-screen flex flex-col justify-center items-center relative bg-gradient-to-b from-resume-light to-resume-secondary/90 text-resume-text-primary w-full">
+      <div className="container mx-auto px-6 py-16 md:py-24 lg:py-32 text-center relative z-10 flex flex-col items-center gap-10 md:gap-16">
+        <div
+          ref={profileRef}
+          className="flex justify-center transform translate-y-10 opacity-0 transition-all duration-700 mb-8 md:mb-12"
+        >
+          <div
+            className={`relative mx-auto ${
+              isMobile ? 'w-40 h-40' : 'md:w-64 md:h-64 lg:w-80 lg:h-80'
+            } rounded-full overflow-hidden border-4 border-resume-bg-alt shadow-lg md:shadow-xl transition-transform duration-300`}
+          >
+            <img
+              src="/profile/lovable-uploads/e86a25c1-b140-4266-8aed-dd77878a31e4.png"
+              alt="Antonio Telimban Jr"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+        <div>
           <h1
             ref={titleRef}
-            className="text-3xl md:text-6xl font-bold text-resume-primary mb-4 transform translate-y-10 opacity-0 transition-all duration-700"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold text-resume-primary mb-5 transform translate-y-10 opacity-0 transition-all duration-700"
           >
             ANTONIO TELIMBAN JR
           </h1>
           <h2
             ref={subtitleRef}
-            className="text-xl md:text-3xl text-resume-primary mb-6 md:mb-8 font-medium transform translate-y-10 opacity-0 transition-all duration-700"
+            className="text-xl md:text-2xl lg:text-3xl text-resume-primary mb-8 md:mb-10 font-medium transform translate-y-10 opacity-0 transition-all duration-700"
           >
             <span className="text-resume-primary">SOFTWARE ENGINEER</span>
           </h2>
           <p
             ref={descriptionRef}
-            className="text-base md:text-lg max-w-2xl mx-auto md:mx-0 mb-8 md:mb-12 text-resume-primary transform translate-y-10 opacity-0 transition-all duration-700"
+            className="text-base md:text-lg lg:text-xl max-w-xl mx-auto mb-10 md:mb-14 text-resume-text-secondary transform translate-y-10 opacity-0 transition-all duration-700"
           >
             Full Stack Developer with a decade of experience building scalable
             applications and optimizing software performance.
           </p>
           <div
             ref={buttonsRef}
-            className="flex flex-wrap justify-center md:justify-start gap-4 transform translate-y-10 opacity-0 transition-all duration-700"
+            className="flex flex-wrap justify-center gap-4 md:gap-5 transform translate-y-10 opacity-0 transition-all duration-700 mb-10"
           >
             <button
               onClick={() => scrollToSection('experience')}
-              className="px-4 md:px-6 py-2 md:py-3 bg-resume-primary text-white rounded-md hover:bg-opacity-90 transition-all hover:scale-105"
+              className="flex items-center gap-2 px-5 md:px-7 py-2.5 md:py-3 bg-resume-primary text-white rounded-lg hover:bg-opacity-90 transition-all hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-resume-primary focus:ring-opacity-50"
             >
+              <User size={isMobile ? 18 : 20} />
               View Experience
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-4 md:px-6 py-2 md:py-3 border border-resume-primary text-resume-primary rounded-md hover:bg-resume-primary hover:text-white transition-all hover:scale-105"
+              className="flex items-center gap-2 px-5 md:px-7 py-2.5 md:py-3 border border-resume-primary text-resume-primary rounded-lg hover:bg-resume-primary hover:text-white transition-all hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-resume-primary focus:ring-opacity-50"
             >
+              <Mail size={isMobile ? 18 : 20} />
               Contact Me
             </button>
           </div>
         </div>
-        <div
-          ref={profileRef}
-          className="flex justify-center md:block md:w-2/5 transform translate-y-10 opacity-0 transition-all duration-700"
+        <button
+          onClick={() => scrollToSection('about')}
+          className="animate-bounce p-2 rounded-full bg-resume-primary/20 hover:bg-resume-primary/30 transition-colors mt-8"
+          aria-label="Scroll to about section"
         >
-          <div
-            className={`relative mx-auto ${
-              isMobile ? 'w-48 h-48' : 'w-80 h-80'
-            } rounded-full overflow-hidden border-4 border-white shadow-xl hover:scale-105 transition-transform duration-300`}
-          >
-            <img
-              src="/resume/lovable-uploads/e86a25c1-b140-4266-8aed-dd77878a31e4.png"
-              alt="Antonio Telimban Jr"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-resume-primary opacity-10 hover:opacity-0 transition-opacity duration-300"></div>
-          </div>
-        </div>
+          <ChevronDown size={32} className="text-resume-primary" />
+        </button>
       </div>
-      <button
-        onClick={() => scrollToSection('about')}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-        aria-label="Scroll to about section"
-      >
-        <ChevronDown size={32} className="text-resume-primary" />
-      </button>
     </section>
   );
 };

@@ -1,36 +1,7 @@
 import { Calendar } from 'lucide-react';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 const Experience = () => {
-  const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const options = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('opacity-100', 'translate-x-0');
-            entry.target.classList.add('scale-100');
-          }, index * 200);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, options);
-
-    timelineRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   const experiences = [
     {
       title: 'Full Stack Software Engineer',
@@ -86,46 +57,41 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="section py-20 bg-resume-light relative overflow-hidden"
+      className="section bg-background text-foreground relative overflow-hidden"
       style={{ '--delay': 2 } as React.CSSProperties}
     >
-      <div className="absolute top-0 left-0 w-full h-full bg-[url('/src/assets/code-pattern.png')] opacity-5"></div>
-      <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl font-bold text-resume-primary mb-12 text-center">
-          Work <span className="text-resume-accent">Experience</span>
+      <div className="container mx-auto px-6 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 md:mb-16 text-center">
+          Work <span className="text-accent">Experience</span>
         </h2>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto space-y-12">
           {experiences.map((exp, index) => (
-            <div
-              key={index}
-              className="timeline-item opacity-0 transform translate-x-10 scale-95 transition-all duration-700"
-              ref={(el) => (timelineRefs.current[index] = el)}
-            >
-              <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                <div>
-                  <h3 className="text-xl font-semibold text-resume-primary">
+            <div key={index} className="timeline-item">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-2 gap-1 sm:gap-4">
+                <div className="flex-grow">
+                  <h3 className="text-lg md:text-xl font-semibold text-foreground">
                     {exp.title}
                   </h3>
-                  <h4 className="text-lg font-medium text-resume-primary">
+                  <h4 className="text-base md:text-lg font-medium text-primary mb-1 sm:mb-0">
                     {exp.company}
                   </h4>
                 </div>
-                <div className="flex items-center text-resume-primary mt-2 md:mt-0 font-medium">
-                  <Calendar size={16} className="mr-1 flex-shrink-0" />
+                <div className="flex items-center text-muted-foreground text-sm md:text-base font-medium mt-1 sm:mt-0 flex-shrink-0">
+                  <Calendar size={16} className="mr-1.5 flex-shrink-0" />
                   <span>{exp.period}</span>
                 </div>
               </div>
 
-              <p className="text-resume-secondary mb-4 italic">
+              <p className="text-muted-foreground text-sm md:text-base mb-4">
                 {exp.location}
               </p>
 
-              <ul className="space-y-2 pr-6">
+              <ul className="space-y-2.5 text-sm md:text-base">
                 {exp.responsibilities.map((resp, respIndex) => (
-                  <li key={respIndex} className="flex items-start">
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-resume-accent mt-2 mr-2 flex-shrink-0"></span>
-                    <span className="break-words text-resume-secondary">
+                  <li key={respIndex} className="flex items-start gap-2.5">
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent mt-[7px] flex-shrink-0"></span>
+                    <span className="text-muted-foreground break-words">
                       {resp}
                     </span>
                   </li>

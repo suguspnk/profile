@@ -1,42 +1,7 @@
 import { CheckCircle2 } from 'lucide-react';
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 const Skills = () => {
-  const categoryRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const toolsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const options = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -100px 0px',
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          if (entry.target === toolsRef.current) {
-            entry.target.classList.add('translate-y-0', 'opacity-100');
-          } else {
-            setTimeout(() => {
-              entry.target.classList.add('translate-y-0', 'opacity-100');
-            }, index * 150);
-          }
-          observer.unobserve(entry.target);
-        }
-      });
-    }, options);
-
-    categoryRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    if (toolsRef.current) observer.observe(toolsRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   const skillCategories = [
     {
       title: 'Programming Languages & Frameworks',
@@ -57,8 +22,7 @@ const Skills = () => {
       title: 'Cloud & DevOps',
       skills: [
         'Google Cloud Platform',
-        'Continuous Integration',
-        'Continuous Deployment',
+        'CI/CD',
         'DevOps Practices',
         'Microservices Architecture',
         'Opentofu',
@@ -69,94 +33,77 @@ const Skills = () => {
       skills: [
         'MySQL',
         'Database Administration',
-        'API Design and Integration',
+        'API Design & Integration',
         'RESTful Services',
       ],
     },
     {
       title: 'Software Engineering',
       skills: [
-        'Object-oriented Programming',
+        'Object-oriented Programming (OOP)',
         'Web Application Development',
         'Software Architecture',
-        'Code Review and Refactoring',
+        'Code Review & Refactoring',
         'Performance Optimization',
         'Security Best Practices',
-        'Data Structures and Algorithms',
+        'Data Structures & Algorithms',
         'Full-stack Development',
-        'Git',
-        'Version Control Systems',
+        'Git & Version Control',
       ],
     },
     {
       title: 'Soft Skills',
       skills: [
         'Team Collaboration',
-        'Problem-solving Aptitude',
+        'Problem-solving',
         'Reliability',
         'Continuous Improvement',
-        'Agile',
+        'Agile Methodologies',
       ],
     },
   ];
 
   const softwareTools = [
     'Git',
-    'Javascript',
-    'Typescript',
-    'NestJS',
-    'Google Cloud Platform',
-    'MySQL',
+    'JavaScript',
+    'TypeScript',
     'React',
     'React Native',
-    'Node JS',
-    'Spring MVC',
+    'Node.js',
+    'NestJS',
     'PHP',
     'Laravel',
     'Java',
-    'Google Cloud Platform',
-    'Agile',
-    'Opentofu',
+    'Spring MVC',
+    'MySQL',
+    'Google Cloud Platform (GCP)',
+    'Opentofu / Terraform',
+    'Docker',
+    'Agile Tools (Jira, etc.)',
   ];
 
   return (
     <section
       id="skills"
-      className="section py-20 bg-white relative overflow-hidden"
+      className="section bg-secondary text-secondary-foreground relative overflow-hidden"
       style={{ '--delay': 3 } as React.CSSProperties}
     >
-      <div className="absolute top-0 right-0 w-full h-full bg-[url('/src/assets/code-pattern.png')] opacity-5 rotate-180"></div>
-      <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl font-bold text-resume-primary mb-12 text-center">
-          Skills & <span className="text-resume-accent">Expertise</span>
+      <div className="container mx-auto px-6 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-12 md:mb-16 text-center">
+          Skills & <span className="text-accent">Expertise</span>
         </h2>
 
-        <div className="mb-16">
-          <h3 className="text-xl font-semibold text-resume-primary mb-6">
-            Skill Categories
-          </h3>
-
+        <div className="mb-12 md:mb-16">
           {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              ref={(el) => (categoryRefs.current[index] = el)}
-              className="skill-category transform translate-y-10 opacity-0 transition-all duration-500 ease-out"
-            >
-              <h4 className="text-lg font-medium text-resume-primary mb-3 flex items-center">
-                <CheckCircle2
-                  size={20}
-                  className="text-resume-accent mr-2 flex-shrink-0"
-                />
+            <div key={index} className="skill-category">
+              <h4 className="text-lg md:text-xl font-semibold text-foreground mb-4 md:mb-5 flex items-center gap-2">
+                <CheckCircle2 size={20} className="text-accent flex-shrink-0" />
                 {category.title}
               </h4>
 
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 md:gap-2.5">
                 {category.skills.map((skill, skillIndex) => (
-                  <span
-                    key={skillIndex}
-                    className="skill-pill hover:scale-105 hover:bg-resume-accent hover:text-white transition-all duration-300"
-                    style={{ animationDelay: `${skillIndex * 0.05}s` }}
-                  >
+                  <span key={skillIndex} className="skill-pill">
                     {skill}
                   </span>
                 ))}
@@ -165,21 +112,14 @@ const Skills = () => {
           ))}
         </div>
 
-        <div
-          ref={toolsRef}
-          className="transform translate-y-10 opacity-0 transition-all duration-700 ease-out"
-        >
-          <h3 className="text-xl font-semibold text-resume-primary mb-6">
+        <div>
+          <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6 md:mb-8 text-center md:text-left">
             Software & Tools
           </h3>
 
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-2 md:gap-2.5 justify-center md:justify-start">
             {softwareTools.map((tool, index) => (
-              <div
-                key={index}
-                className="bg-resume-secondary rounded-md p-3 text-resume-dark hover:bg-resume-primary hover:text-white transition-colors hover:scale-105 transform"
-                style={{ transitionDelay: `${index * 0.03}s` }}
-              >
+              <div key={index} className="skill-pill">
                 {tool}
               </div>
             ))}
