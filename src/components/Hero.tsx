@@ -87,7 +87,7 @@ const Hero = () => {
             } rounded-full overflow-hidden border-4 border-white shadow-xl hover:scale-105 transition-transform duration-300`}
           >
             <img
-              src="/lovable-uploads/e86a25c1-b140-4266-8aed-dd77878a31e4.png"
+              src="/resume/lovable-uploads/e86a25c1-b140-4266-8aed-dd77878a31e4.png"
               alt="Antonio Telimban Jr"
               className="w-full h-full object-cover"
             />
