@@ -6,7 +6,7 @@ const Experience = () => {
     {
       title: 'Full Stack Software Engineer',
       company: 'Symph, Inc.',
-      location: 'Cebu City, Province Of Cebu, Philippines (Remote)',
+      location: 'Cebu City, Philippines (Remote)',
       period: '03/2022 - Current',
       responsibilities: [
         'Delivered high-quality software solutions on schedule by prioritizing tasks effectively and managing project timelines.',
@@ -25,7 +25,7 @@ const Experience = () => {
     {
       title: 'Software Supervisor',
       company: 'Rococo Global Technologies Corp.',
-      location: 'Cebu City, PH',
+      location: 'Cebu City, Philippines',
       period: '07/2018 - 03/2021',
       responsibilities: [
         'Mentored junior developers, fostering their growth and enhancing overall team performance.',
@@ -40,7 +40,7 @@ const Experience = () => {
     {
       title: 'Associate Software Engineer',
       company: 'Advanced World Solutions, Inc.',
-      location: 'Cebu City, PH',
+      location: 'Cebu City, Philippines',
       period: '06/2015 - 03/2018',
       responsibilities: [
         'Collaborated with cross-functional teams to develop, test, and deploy high-quality software solutions for clients.',

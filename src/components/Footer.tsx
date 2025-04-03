@@ -111,7 +111,7 @@ const Footer = () => {
                   size={18}
                 />
                 <span className="text-sm md:text-base">
-                  Cebu City, Province Of Cebu, CEB 6000
+                  Cebu City, Province Of Cebu, Philippines
                 </span>
               </div>
 

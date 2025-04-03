@@ -77,7 +77,7 @@ const About = () => {
                   size={18}
                 />
                 <span className="text-muted-foreground">
-                  Cebu City, Province Of Cebu, CEB 6000
+                  Cebu City, Province Of Cebu, Philippines
                 </span>
               </div>
 
