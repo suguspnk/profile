@@ -5,7 +5,6 @@ import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/profile/',
   server: {
     host: '::',
     port: 8080,

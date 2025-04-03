@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://suguspnk.github.io/profile/",
+  "homepage": "https://antonio.telimban.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
