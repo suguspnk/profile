@@ -83,7 +83,7 @@ const About = () => {
 
               <div className="flex items-start gap-3">
                 <Phone className="text-accent flex-shrink-0 mt-0.5" size={18} />
-                <span className="text-muted-foreground">+63 906 892 5683</span>
+                <span className="text-muted-foreground">+63 919 504 3421</span>
               </div>
 
               <div className="flex items-start gap-3">
